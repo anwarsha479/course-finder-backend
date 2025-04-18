@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const serverless = require("serverless-http");
 
-// Load .env from parent directory
+// Load .env from the root directory
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
@@ -25,8 +25,7 @@ mongoose
     console.log("✅ Successfully connected to MongoDB Atlas");
 
     // Start the scheduler ONLY after DB connection is established
-    require('../scheduler');  // Ensure scheduler.js is in the correct path
-
+    require('../scheduler'); // Ensure this path is correct from the 'api' folder
   })
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err);
@@ -34,7 +33,7 @@ mongoose
   });
 
 // Routes
-const courseRoutes = require("../routes/courses");  // Make sure this path is correct
+const courseRoutes = require("../routes/courses");  // Ensure this path is correct from 'api' folder
 app.use("/api/courses", courseRoutes);
 
 // Export the serverless function to be used by Vercel
