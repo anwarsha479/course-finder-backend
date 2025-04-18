@@ -1,41 +1,42 @@
-<<<<<<< HEAD
-# **Course Finder**
+cat > README.md << 'EOF'
+# Course Finder
 
 A platform to help users find the best online courses by comparing top-rated courses from various websites, including Coursera, LinkedIn, Pluralsight, and YouTube. The website allows users to search for courses on specific topics, view their ratings, reviews, and other details, and choose the best one for their learning journey.
 
-## **Features**
+## Features
 - **Search Courses**: Users can search for courses based on a specific topic.
 - **Compare Courses**: The platform compares top-rated courses from multiple websites based on their ratings, reviews, and other parameters.
 - **Filter and Sort**: Users can filter courses by rating, reviews, and other metadata.
 - **Course Details**: View course information such as duration, level, and provider.
 - **Persistent Data**: Once the data is scraped for a search query, it is stored in MongoDB for future reference, reducing the need to scrape the same data multiple times.
 
-## **Technologies Used**
-### **Frontend:**
+## Technologies Used
+
+### Frontend:
 - React.js
 - HTML, CSS
 
-### **Backend:**
+### Backend:
 - Node.js with Express.js
 - MongoDB for data storage
 - Axios for API calls to scrape courses from websites
 
-### **Scraping:**
+### Scraping:
 - Python scripts for scraping data from Coursera, LinkedIn, Pluralsight, and YouTube.
 
-### **Deployment:**
+### Deployment:
 - Vercel for frontend deployment
 - Heroku or another platform for backend deployment (optional)
 
-## **How to Run Locally**
+## How to Run Locally
 
-### **Prerequisites**
+### Prerequisites
 Before you start, ensure you have the following installed:
 - **Node.js and npm**: [Install Node.js](https://nodejs.org/)
 - **MongoDB**: If you don't have MongoDB installed locally, you can use a cloud database like [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 - **Python**: Ensure Python is installed to run the scraping scripts.
 
-### **Steps to Run Locally**
+### Steps to Run Locally
 1. **Clone the repository**:
     ```bash
     git clone https://github.com/your-username/course-finder.git
@@ -50,13 +51,13 @@ Before you start, ensure you have the following installed:
         ```
     - For the backend:
         ```bash
-        cd backend
+        cd ../backend
         npm install
         ```
 
 3. **Set up environment variables**:
-    - Create a `.env` file in the root of the backend directory and add the following:
-      ```bash
+    - Create a `.env` file in the `backend` directory and add the following:
+      ```env
       MONGO_URI=your-mongodb-connection-string
       PORT=5000
       ```
@@ -69,7 +70,7 @@ Before you start, ensure you have the following installed:
       ```
     - Frontend (React app):
       ```bash
-      cd frontend
+      cd ../frontend
       npm start
       ```
     The app should now be running at `http://localhost:3000` for the frontend and `http://localhost:5000` for the backend.
@@ -80,21 +81,28 @@ Before you start, ensure you have the following installed:
       python coursera.py "python"
       ```
 
-### **Testing**
+### Testing
 To test the application, you can use Postman to test the backend APIs. The following endpoints are available:
-- **GET /api/courses** - Get all courses.
-- **GET /api/courses/:query** - Get courses based on the search query (e.g., `python`).
-- **POST /api/courses/compare** - Compare courses based on rating and reviews.
+- **GET /api/courses** – Get all courses.
+- **GET /api/courses/:query** – Get courses based on the search query (e.g., `python`).
+- **POST /api/courses/compare** – Compare courses based on rating and reviews.
 
-## **How to Deploy**
-### **Frontend Deployment:**
-To deploy the frontend to Vercel, create an account on Vercel, connect your GitHub repository, and follow the prompts for automatic deployment.
+## How to Deploy
 
-### **Backend Deployment:**
-You can deploy the backend to platforms like Heroku, DigitalOcean, or Vercel (for serverless functions). Ensure to configure your MongoDB connection URI and other environment variables correctly.
+### Frontend Deployment:
+To deploy the frontend to Vercel:
+1. Create an account on [Vercel](https://vercel.com/).
+2. Connect your GitHub repository.
+3. Follow the prompts for automatic deployment.
 
-## **Contribution**
+### Backend Deployment:
+You can deploy the backend to platforms like:
+- Heroku
+- Render
+- Vercel (serverless functions)
+
+Make sure to set your environment variables correctly.
+
+## Contribution
 Feel free to fork this repository, submit issues, and create pull requests. Contributions are welcome!
-=======
-# Course-Finder
->>>>>>> 331f54b (Initial commit)
+EOF
