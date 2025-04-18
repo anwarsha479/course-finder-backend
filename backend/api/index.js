@@ -33,7 +33,7 @@ mongoose
   });
 
 // Routes
-const courseRoutes = require("../routes/courses");  // Ensure this path is correct from 'api' folder
+const courseRoutes = require("../../routes/courses");  // Correct path to courses.js
 app.use("/api/courses", courseRoutes);
 
 // Export the serverless function to be used by Vercel
