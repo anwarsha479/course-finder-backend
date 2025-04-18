@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # **Course Finder**
 
 A platform to help users find the best online courses by comparing top-rated courses from various websites, including Coursera, LinkedIn, Pluralsight, and YouTube. The website allows users to search for courses on specific topics, view their ratings, reviews, and other details, and choose the best one for their learning journey.
@@ -94,3 +95,6 @@ You can deploy the backend to platforms like Heroku, DigitalOcean, or Vercel (fo
 
 ## **Contribution**
 Feel free to fork this repository, submit issues, and create pull requests. Contributions are welcome!
+=======
+# Course-Finder
+>>>>>>> 331f54b (Initial commit)
