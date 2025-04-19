@@ -7,6 +7,8 @@ import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException, WebDriverException
+import shutil
+import os
 
 class Course:
     def __init__(self, title: str, rating: float, review_count: int, url: str, level: str):
@@ -44,7 +46,31 @@ class PluralsightScraper:
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
+
+        # Automatically try to set the Chrome binary location if needed
+        chrome_binary = PluralsightScraper._get_chrome_binary_location()
+        if chrome_binary:
+            options.binary_location = chrome_binary
+
         return options
+
+    @staticmethod
+    def _get_chrome_binary_location() -> Optional[str]:
+        # Check if Chrome is available in the PATH
+        chrome_path = shutil.which("google-chrome") or shutil.which("chromium-browser")
+        
+        # Check default Chrome paths (common locations in Linux/Render)
+        if not chrome_path:
+            default_chrome_paths = [
+                "/usr/bin/google-chrome",
+                "/usr/bin/chromium-browser",
+                "/opt/google/chrome/chrome"
+            ]
+            for path in default_chrome_paths:
+                if os.path.exists(path):
+                    return path
+
+        return chrome_path  # Returns None if no valid location is found
 
     def _create_driver(self):
         if not self.driver:

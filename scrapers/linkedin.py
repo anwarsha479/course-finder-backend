@@ -63,13 +63,14 @@ def scrape_linkedin_learning_courses(search_query):
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
-
+    options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Update this path if necessary
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
 
     try:
         driver.get(base_url)
         WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'base-card')))
-        
+
         course_cards = driver.find_elements(By.CLASS_NAME, 'base-card')
         courses = []
 
