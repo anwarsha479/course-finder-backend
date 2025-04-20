@@ -3,7 +3,7 @@ import json
 import atexit
 import sys
 from typing import List, Dict, Optional
-import undetected_chromedriver as uc
+import undetected_chromedriver.v2 as uc
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException, WebDriverException
@@ -47,8 +47,15 @@ class PluralsightScraper:
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
 
-        # Automatically try to set the Chrome binary location if needed
+        # Log the Chromium path before setting up binary_location
+        print("Checking Chromium path...")
         chrome_binary = PluralsightScraper._get_chrome_binary_location()
+        if not chrome_binary:
+            print("Chromium not found!")
+        else:
+            print(f"Chromium found at: {chrome_binary}")
+
+        # Automatically try to set the Chrome binary location if needed
         if chrome_binary:
             options.binary_location = chrome_binary
 

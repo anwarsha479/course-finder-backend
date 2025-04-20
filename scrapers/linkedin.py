@@ -57,15 +57,25 @@ def scrape_linkedin_learning_courses(search_query):
     query = search_query.replace(" ", "%20")
     base_url = f"https://www.linkedin.com/learning/search?keywords={query}"
 
+    # Log the Chromium path to ensure it's set up correctly
+    print("Checking Chromium path...")
+    chromium_path = os.popen("which chromium").read().strip()
+
+    if not chromium_path:
+        print("Chromium not found!")
+    else:
+        print(f"Chromium found at: {chromium_path}")
+
+    # Set up Chrome options for headless browsing
     options = webdriver.ChromeOptions()
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
-    options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Update this path if necessary
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    options.binary_location = "/usr/bin/chromium"  # Ensure the correct path here
 
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     try:
         driver.get(base_url)
